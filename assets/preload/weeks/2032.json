@@ -1,0 +1,21 @@
+{
+	"songs": [
+		["2032", "face", [165, 0, 77]]
+	],
+
+	"weekCharacters": [
+		"",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "stage",
+
+	"storyName": "2032",
+	"weekBefore": "backroom",
+	"weekName": "2032",
+	"difficulties": "",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}

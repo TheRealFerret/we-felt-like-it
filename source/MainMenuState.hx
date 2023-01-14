@@ -145,17 +145,30 @@ class MainMenuState extends MusicBeatState
 		Achievements.loadAchievements();
 		#end
 
+		// #if ACHIEVEMENTS_ALLOWED
+		// Achievements.loadAchievements();
+		// var leDate = Date.now();
+		// if (leDate.getFullYear() == 2032) {
+		// 	var achieveID:Int = Achievements.getAchievementIndex('timetravel');
+		// 	if(!Achievements.isAchievementUnlocked(Achievements.achievementsStuff[achieveID][2])) { //welcome to the future
+		// 		Achievements.achievementsMap.set(Achievements.achievementsStuff[achieveID][2], true);
+		// 		giveAchievement();
+		// 		ClientPrefs.saveSettings();
+		// 	}
+		// }
+		// #end
+
 		super.create();
 	}
 
-	#if ACHIEVEMENTS_ALLOWED
-	// Unlocks "Freaky on a Friday Night" achievement
-	function giveAchievement() {
-		add(new AchievementObject('friday_night_play', camAchievement));
-		FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
-		trace('Giving achievement "friday_night_play"');
-	}
-	#end
+	// #if ACHIEVEMENTS_ALLOWED
+	// // Unlocks "Freaky on a Friday Night" achievement
+	// function giveAchievement() {
+	// 	add(new AchievementObject('timetravel', camAchievement));
+	// 	FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
+	// 	trace('Giving achievement "timetravel"');
+	// }
+	// #end
 
 	var selectedSomethin:Bool = false;
 

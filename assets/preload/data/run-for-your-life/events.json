@@ -16,8 +16,13 @@
 				[
 					[
 						"Change Character",
-						"1",
+						"Dad",
 						"entitystartrunanim"
+					],
+					[
+						"Play Animation",
+						"run",
+						"Dad"
 					],
 					[
 						"Hud Fade",

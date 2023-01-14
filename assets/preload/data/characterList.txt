@@ -6,6 +6,9 @@ gf-pixel
 bf-pixel-opponent
 mark
 entity
+argyll
+argyll-maskfall
+argyll-maskless
 cilo
 clio-guitar
 dapper

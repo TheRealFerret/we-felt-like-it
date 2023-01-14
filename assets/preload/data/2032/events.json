@@ -1,0 +1,31 @@
+{
+	"song": {
+		"events": [
+			[
+				49000,
+				[
+					[
+						"Change Character",
+						"Dad",
+						"argyll-maskfall"
+					],
+					[
+						"Play Animation",
+						"fall",
+						"Dad"
+					]
+				]
+			],
+			[
+				50000,
+				[
+					[
+						"Change Character",
+						"Dad",
+						"argyll-maskless"
+					]
+				]
+			]
+		]
+	}
+}

@@ -70,6 +70,7 @@ import flixel.addons.display.FlxRuntimeShader;
 #end
 
 #if sys
+import Sys;
 import sys.FileSystem;
 import sys.io.File;
 #end
@@ -346,6 +347,9 @@ class PlayState extends MusicBeatState
 	var alternateMovement:Bool = false;
 	var gunInfo:FlxText;
 
+	var table:BGSprite;
+	var light:BGSprite;
+
 	var facility:BGSprite;
 	var frontFacility:BGSprite;
 	var captiveDeathMessages:Array<String> = ['WHAT IF I KILLED YOU', 'YOU ACTUALL FUCKING SUCK LMAO', 'SKILL ISSUE, I\'M SO ORIGINAL', 'BRO COME ON', 'GET FUCKED', 'OH ARE YOU GONNA CRY?',
@@ -566,10 +570,6 @@ class PlayState extends MusicBeatState
 					add(stageCurtains);
 				}
 				dadbattleSmokes = new FlxSpriteGroup(); //troll'd
-			case 'behindspace':
-				var bg = new BGSprite('thebehindspace/room', -600, -200, 0.9, 0.9);
-				bg.setGraphicSize(Std.int(bg.width * 2));
-				add(bg);
 			case 'hallway':
 				hall = new FlxBackdrop(Paths.image('hallway/backrooms', 'yeah'), 0, 0);
 				hall.y -= 120;
@@ -606,6 +606,13 @@ class PlayState extends MusicBeatState
 				gunInfo.cameras = [camOther];
 				add(gunInfo);
 				gunInfo.alpha = 0;
+			case '2032':
+				table = new BGSprite('2032/table', -600, -200, 1, 1);
+				light = new BGSprite('2032/light', -600, -200, 1, 1);
+			case 'behindspace':
+				var bg = new BGSprite('thebehindspace/room', -600, -200, 0.9, 0.9);
+				bg.setGraphicSize(Std.int(bg.width * 2));
+				add(bg);
 			case 'facility': // mmmm tre
 				GameOverSubstate.characterName = 'markusclover-dead';
 				GameOverSubstate.deathSoundName = 'fnf_loss_sfx-markusclover';
@@ -623,6 +630,8 @@ class PlayState extends MusicBeatState
 		switch(Paths.formatToSongPath(SONG.song))
 		{
 			case 'run-for-your-life':
+				addCharacterToList('entitystartrunanim', 1);
+
 				skipCountdown = true;
 
 				camHUD.alpha = 0;
@@ -639,12 +648,19 @@ class PlayState extends MusicBeatState
 				GameOverSubstate.endSoundName = '';//'gameOverEnd-lostcause';
 				GameOverSubstate.characterName = 'mark-dead';
 
+
 				if(ClientPrefs.shaders){
 					addShaderToCamera('camGame', new VCRDistortionEffect(0.025, true, false, true));
 					//addShaderToCamera('camHUD', new VCRDistortionEffect(0.025, true, false, true));
 					// addShaderToCamera('camNotes', new VCRDistortionEffect(0.025, true, false, true));
 					//addShaderToCamera('camOther', new VCRDistortionEffect(0.025, true, false, true));
 				}
+			case '2032':
+				addCharacterToList('argyll-maskfall', 1);
+				addCharacterToList('argyll-maskless', 1);
+				boyfriendGroup.alpha = 0;
+			case 'simply-better-than-you':
+				addCharacterToList('clio-guitar', 1);
 			case 'captive':
 				if(ClientPrefs.shaders)
 					addShaderToCamera('camGame', new ChromaticAberrationEffect(0.005));
@@ -675,6 +691,9 @@ class PlayState extends MusicBeatState
 			case 'hallway':
 				add(lights);
 				add(pillar);
+			case '2032':
+				add(table);
+				add(light);
 			case 'facility':
 				add(frontFacility);
 		}
@@ -1103,7 +1122,23 @@ class PlayState extends MusicBeatState
 		}
 		else
 		{
-			startCountdown();
+			var leDate = Date.now();
+			if (daSong == '2032' && leDate.getFullYear() == 2032){
+				startVideo('nuke_omg_real');
+				new FlxTimer().start(13, function(tmr:FlxTimer){
+					var achieveID:Int = Achievements.getAchievementIndex('timetravel');
+					if(!Achievements.isAchievementUnlocked(Achievements.achievementsStuff[achieveID][2])) { //welcome to the future
+						Achievements.achievementsMap.set(Achievements.achievementsStuff[achieveID][2], true);
+						add(new AchievementObject('timetravel', camOther));
+						ClientPrefs.saveSettings();
+					}
+					#if sys
+					Sys.exit(0);
+					#end
+				});
+			}
+			else
+				startCountdown();
 		}
 		RecalculateRating();
 
@@ -1410,7 +1445,7 @@ class PlayState extends MusicBeatState
 
 	function startCharacterLua(name:String)
 	{
-		#if LUA_ALLOWED
+		#if LUA_ALLOW:VoidED
 		var doPush:Bool = false;
 		var luaFile:String = 'characters/' + name + '.lua';
 		#if MODS_ALLOWED
@@ -1479,6 +1514,11 @@ class PlayState extends MusicBeatState
 		video.playVideo(filepath);
 		video.finishCallback = function()
 		{
+			if (SONG.song == '2032'){
+				#if sys
+				Sys.exit(0);
+				#end
+			}
 			startAndEnd();
 			return;
 		}
@@ -3269,15 +3309,24 @@ class PlayState extends MusicBeatState
 
 	function openChartEditor()
 	{
-		persistentUpdate = false;
-		paused = true;
-		cancelMusicFadeTween();
-		MusicBeatState.switchState(new ChartingState());
-		chartingMode = true;
+		if (SONG.song.toLowerCase() == 'captive'){
+			WindowsNotification.sendFakeMsgBox('THE FUCK YOU LOOKING AT?');
+			#if sys
+			Sys.exit(0);
+			#end
+			health = 0;
+		}
+		else{
+			persistentUpdate = false;
+			paused = true;
+			cancelMusicFadeTween();
+			MusicBeatState.switchState(new ChartingState());
+			chartingMode = true;
 
-		#if desktop
-		DiscordClient.changePresence("Chart Editor", null, null, true);
-		#end
+			#if desktop
+			DiscordClient.changePresence("Chart Editor", null, null, true);
+			#end
+		}
 	}
 
 	public var isDead:Bool = false; //Don't mess with this on Lua!!!
@@ -3833,9 +3882,7 @@ class PlayState extends MusicBeatState
 		if(achievementObj != null) {
 			return;
 		} else {
-			var achieve:String = checkForAchievement(['week1_nomiss', 'week2_nomiss', 'week3_nomiss', 'week4_nomiss',
-				'week5_nomiss', 'week6_nomiss', 'week7_nomiss', 'ur_bad',
-				'ur_good', 'hype', 'two_keys', 'toastie', 'debugger']);
+			var achieve:String = checkForAchievement(['rfyl_fc', '2032_fc', 'sbty_fc', 'captive_95acc']);
 
 			if(achieve != null) {
 				startAchievement(achieve);
@@ -4903,22 +4950,32 @@ class PlayState extends MusicBeatState
 		}
 		FlxG.sound.music.fadeTween = null;
 	}
-
+	
+	var popupCount:Float = 0;
 	function popupWindow() {
+		var popupScaleTween:FlxTween;
 		var popup:FlxSprite = new FlxSprite().loadGraphic(Paths.image('facility/dumb/dumb' + FlxG.random.int(1, 26), 'yeah'));
 		popup.x = FlxG.random.int(700, 1000);
 		popup.y = FlxG.random.int(50, 550);
 		popup.alpha = 0;
 		popup.cameras = [camOther];
 		popup.antialiasing = ClientPrefs.globalAntialiasing;
+		popup.scale.set(0.85, 0.85);
 		add(popup);
+		canPause = false;
 		if (!paused) {
-		FlxTween.tween(popup, {alpha: 1}, 0.5, {ease: FlxEase.circOut, onComplete: function(twn:FlxTween)
+		popupScaleTween = FlxTween.tween(popup.scale, {x: 1, y: 1}, 0.25, {ease: FlxEase.quintOut});
+		FlxTween.tween(popup, {alpha: 1}, 0.15, {onComplete: function(twn:FlxTween)
 			{
-				new FlxTimer().start(4, function(tmr:FlxTimer)
+				popupCount += 1;
+				new FlxTimer().start(5, function(tmr:FlxTimer)
 					{
-						FlxTween.tween(popup, {alpha: 0}, 0.5, {ease: FlxEase.cubeInOut, onComplete: function(twn:FlxTween)
+						popupScaleTween = FlxTween.tween(popup.scale, {x: 0.85, y: 0.85}, 0.25, {ease: FlxEase.quintOut});
+						FlxTween.tween(popup, {alpha: 0}, 0.25, {ease: FlxEase.quintOut, onComplete: function(twn:FlxTween)
 							{
+								popupCount -= 1;
+								if (popupCount == 0)
+									canPause = true;
 								remove(popup);
 							}});
 					});
@@ -4927,20 +4984,29 @@ class PlayState extends MusicBeatState
     }
 
 	function popupWindowGasta() { //to lazy
+		var popupScaleTween:FlxTween;
 		var popup:FlxSprite = new FlxSprite().loadGraphic(Paths.image('facility/dumb/gaerstr', 'yeah'));
+		popup.scale.set(0.85, 0.85);
 		popup.x = FlxG.random.int(700, 1000);
 		popup.y = FlxG.random.int(50, 550);
 		popup.alpha = 0;
 		popup.cameras = [camOther];
 		popup.antialiasing = ClientPrefs.globalAntialiasing;
 		add(popup);
+		canPause = false;
 		if (!paused) {
-			FlxTween.tween(popup, {alpha: 1}, 0.5, {ease: FlxEase.circOut, onComplete: function(twn:FlxTween)
+			popupScaleTween = FlxTween.tween(popup.scale, {x: 1, y: 1}, 0.25, {ease: FlxEase.quintOut});
+			FlxTween.tween(popup, {alpha: 1}, 0.25, {ease: FlxEase.quintOut, onComplete: function(twn:FlxTween)
 				{
-					new FlxTimer().start(4, function(tmr:FlxTimer)
+					popupCount += 1;
+					new FlxTimer().start(5, function(tmr:FlxTimer)
 						{
-							FlxTween.tween(popup, {alpha: 0}, 0.5, {ease: FlxEase.cubeInOut, onComplete: function(twn:FlxTween)
+							popupScaleTween = FlxTween.tween(popup.scale, {x: 0.85, y: 0.85}, 0.25, {ease: FlxEase.quintOut});
+							FlxTween.tween(popup, {alpha: 0}, 0.25, {ease: FlxEase.quintOut, onComplete: function(twn:FlxTween)
 								{
+									popupCount -= 1;
+									if (popupCount == 0)
+										canPause = true;
 									remove(popup);
 								}});
 						});
@@ -4949,15 +5015,17 @@ class PlayState extends MusicBeatState
     }
 
 	function popupWindowFuck() { //to lazy part 2
-
+		var popupScaleTween:FlxTween;
 		var popup:FlxSprite = new FlxSprite().loadGraphic(Paths.image('facility/dumb/fuck', 'yeah'));
 		popup.screenCenter();
 		popup.cameras = [camOther];
 		popup.alpha = 0;
 		popup.antialiasing = ClientPrefs.globalAntialiasing;
+		popup.scale.set(0.8, 0.8);
 		add(popup);
 		if (!paused) {
-			FlxTween.tween(popup, {alpha: 1}, 0.5, {ease: FlxEase.circOut});
+			popupScaleTween = FlxTween.tween(popup.scale, {x: 1, y: 1}, 0.25, {ease: FlxEase.quintOut});
+			FlxTween.tween(popup, {alpha: 1}, 0.25, {ease: FlxEase.quintOut});
 		}
     }
 
@@ -5285,11 +5353,22 @@ class PlayState extends MusicBeatState
 				// }
 				switch(achievementName)
 				{
-					case 'wasn\'t better than you':
-						if(ratingPercent >= 1 && !practiceMode && Paths.formatToSongPath(SONG.song) == 'simply-better-than-you') {
+					case 'rfyl_fc':
+						if(songMisses < 1 && !usedPractice && Paths.formatToSongPath(SONG.song) == 'run-for-your-life') {
 							unlock = true;
-						}
-					
+						}			
+					case '2032_fc':
+						if(songMisses < 1 && !usedPractice && Paths.formatToSongPath(SONG.song) == '2032') {
+							unlock = true;
+						}			
+					case 'sbty_fc':
+						if(songMisses < 1 && !usedPractice && Paths.formatToSongPath(SONG.song) == 'simply-better-than-you') {
+							unlock = true;
+						}			
+					case 'captive_95acc':
+						if(ratingPercent >= 0.95 && !usedPractice && Paths.formatToSongPath(SONG.song) == 'captive') {
+							unlock = true;
+						}				
 				}
 
 				if(unlock) {

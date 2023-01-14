@@ -11,7 +11,11 @@ using StringTools;
 
 class Achievements {
 	public static var achievementsStuff:Array<Dynamic> = [ //Name, Description, Achievement save tag, Hidden achievement
-		["wasn\'t better than you",		"pfc simply better than you.",				'week1_nomiss',			false]
+		["baby game",								"FC Run for Your Life",						'rfyl_fc',			false],
+		["unnaturally intelligent baby game",		"FC 2032",									'2032_fc',			false],
+		["wasn\'t better than you",					"fc simply better than you",				'sbty_fc',			false],
+		["igiumoa",									"FC Captive",								'captive_95acc',	false],
+		["does he know?",							"time traveler",							'timetravel',		true]
 	];
 	public static var achievementsMap:Map<String, Bool> = new Map<String, Bool>();
 
@@ -20,6 +24,10 @@ class Achievements {
 		FlxG.log.add('Completed achievement "' + name +'"');
 		achievementsMap.set(name, true);
 		FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
+	}
+
+	public static function lockAchievement(name:String):Void {
+		achievementsMap.set(name, false);
 	}
 
 	public static function isAchievementUnlocked(name:String) {

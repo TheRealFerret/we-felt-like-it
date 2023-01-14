@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="MaskFall.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="mask falls off0000" x="16" y="16" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+	<SubTexture name="mask falls off0001" x="16" y="16" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+	<SubTexture name="mask falls off0002" x="16" y="16" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+	<SubTexture name="mask falls off0003" x="402" y="16" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+	<SubTexture name="mask falls off0004" x="402" y="16" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+	<SubTexture name="mask falls off0005" x="788" y="16" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+	<SubTexture name="mask falls off0006" x="788" y="16" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+	<SubTexture name="mask falls off0007" x="1174" y="16" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+	<SubTexture name="mask falls off0008" x="1560" y="16" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+	<SubTexture name="mask falls off0009" x="16" y="521" width="373" height="556"/>
+	<SubTexture name="mask falls off0010" x="402" y="521" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+	<SubTexture name="mask falls off0011" x="402" y="521" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+	<SubTexture name="mask falls off0012" x="402" y="521" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+	<SubTexture name="mask falls off0013" x="402" y="521" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+	<SubTexture name="mask falls off0014" x="402" y="521" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+	<SubTexture name="mask falls off0015" x="402" y="521" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+	<SubTexture name="mask falls off0016" x="402" y="521" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+	<SubTexture name="mask falls off0017" x="402" y="521" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+	<SubTexture name="mask falls off0018" x="402" y="521" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+	<SubTexture name="mask falls off0019" x="402" y="521" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+	<SubTexture name="mask falls off0020" x="402" y="521" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+	<SubTexture name="mask falls off0021" x="402" y="521" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+	<SubTexture name="mask falls off0022" x="402" y="521" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+	<SubTexture name="mask falls off0023" x="402" y="521" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+	<SubTexture name="mask falls off0024" x="402" y="521" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+	<SubTexture name="mask falls off0025" x="402" y="521" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+	<SubTexture name="mask falls off0026" x="402" y="521" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+	<SubTexture name="mask falls off0027" x="402" y="521" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+	<SubTexture name="mask falls off0028" x="402" y="521" width="373" height="492" frameX="0" frameY="0" frameWidth="373" frameHeight="556"/>
+</TextureAtlas>
