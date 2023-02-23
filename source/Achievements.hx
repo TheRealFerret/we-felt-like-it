@@ -14,7 +14,7 @@ class Achievements {
 		["baby game",								"FC Run for Your Life",						'rfyl_fc',			false],
 		["unnaturally intelligent baby game",		"FC 2032",									'2032_fc',			false],
 		["wasn\'t better than you",					"fc simply better than you",				'sbty_fc',			false],
-		["igiumoa",									"FC Captive",								'captive_95acc',	false],
+		["igiumoa",									"Get 95% or more accuracy in Captive",		'captive_95acc',	false],
 		["does he know?",							"time traveler",							'timetravel',		true]
 	];
 	public static var achievementsMap:Map<String, Bool> = new Map<String, Bool>();

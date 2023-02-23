@@ -81,6 +81,21 @@ class CreditsState extends MusicBeatState
 		#end
 
 		var pisspoop:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
+			['we felt like it'],
+			['Clio.mp3',			'clio',				'director, artist, and made all the music',										'https://twitter.com/clio_mp3',									'9753D6'],
+			['TheRealFerret',		'ferret (im being forced to use this help)',			'only programmer (clearly the coolest) and charter of simply better than you and charted cunt difficulty of captive\nhelp im being forced to use this credit icon',	'https://www.youtube.com/channel/UCWNMz9fwKjLdQQb2vtSN3nA',		'8045BD'],
+			['vurn',				'blank',			'artist',																	'https://www.whitehouse.gov/administration/president-biden/',	'5E99DF'],
+			['Redaction',			'redact',			'artist',																		'https://www.whitehouse.gov/administration/president-biden/',	'444444'],
+			['Slot',				'slot',				'bg stage for captive',															'https://www.whitehouse.gov/administration/president-biden/',	'FFFFFF'],
+			['TheChildOfFandoms95',	'fands',			'logo artist',																	'https://www.whitehouse.gov/administration/president-biden/',	'FFFFFF'],
+			['BlazeWasHereLol',		'blaze',			'charter of 2032',																'https://twitter.com/BlazeHereLmao',							'1A2E94'],
+			['Grantwo',				'grant',			'charter of Run for Your Life and cunt 2 difficulty of captive',				'https://www.youtube.com/channel/UC__PgWAhZe4_8dH1A0HLAvA',		'282828'],
+			['Flaconadir', 			'flaconadir',		'voiceline in captive',															'https://www.whitehouse.gov/administration/president-biden/',	'9B2526'],
+			['Haylow',				'blank',			'he chilling',																	'https://www.whitehouse.gov/administration/president-biden/',	'AF3030'],
+			['Electric',			'electric',			'he will have art here soon',													'https://www.whitehouse.gov/administration/president-biden/',	'B92222'],
+			['Kevinmc1108',			'kevin',			'he tried',																		'https://www.whitehouse.gov/administration/president-biden/',	'AF3030'],
+			['geoffry',				'geoffry',			'geoffry',																		'https://www.whitehouse.gov/administration/president-biden/',	'7A7A8C'],
+			[''],
 			['Psych Engine Team'],
 			['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',								'https://twitter.com/Shadow_Mario_',	'444444'],
 			['RiverOaken',			'river',			'Main Artist/Animator of Psych Engine',							'https://twitter.com/RiverOaken',		'B42F71'],

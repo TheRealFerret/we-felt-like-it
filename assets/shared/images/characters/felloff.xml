@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="felloff.png">
+	<!-- Created with Adobe Animate version 22.0.5.191 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="firstdead0000" x="0" y="0" width="1000" height="150" frameX="0" frameY="0" frameWidth="1000" frameHeight="150"/>
+	<SubTexture name="dead0000" x="0" y="0" width="1000" height="150" frameX="0" frameY="0" frameWidth="1000" frameHeight="150"/>
+	<SubTexture name="enddead0000" x="0" y="0" width="1000" height="150" frameX="0" frameY="0" frameWidth="1000" frameHeight="150"/>
+</TextureAtlas>

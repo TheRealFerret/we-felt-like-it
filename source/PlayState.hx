@@ -83,6 +83,8 @@ using StringTools;
 
 class PlayState extends MusicBeatState
 {
+	var debugMode:Bool = false;
+
 	public static var STRUM_X = 42;
 	public static var STRUM_X_MIDDLESCROLL = -278;
 
@@ -294,6 +296,7 @@ class PlayState extends MusicBeatState
 
 	public var inCutscene:Bool = false;
 	public var skipCountdown:Bool = false;
+	public var noCountdown:Bool = false;
 	var songLength:Float = 0;
 	var timeBarLength:Float = 0;
 
@@ -346,9 +349,12 @@ class PlayState extends MusicBeatState
 	var markShootingHit:Bool = false;
 	var alternateMovement:Bool = false;
 	var gunInfo:FlxText;
+	var smilePleas:FlxText;
+	var smiler:BGSprite;
 
 	var table:BGSprite;
 	var light:BGSprite;
+	var argyllPortrait:BGSprite;
 
 	var facility:BGSprite;
 	var frontFacility:BGSprite;
@@ -356,12 +362,21 @@ class PlayState extends MusicBeatState
 	'SHIT YOURSELF', 'YOU DIED ON PURPOSE, RIGHT?', 'YOU CAN\'T TURN OFF THE POPUPS', 'BITCHING ABOUT MECHANICS WON\'T CHANGE SHIT', 'YOUR CAR IS AS WORTHLESS AS YOU', 'I\'M JUST THAT GOOD',
 	'96.465.378.212', 'I WILL TAKE OVER EVERYTHING', 'YOU\'RE BAD', 'DICK IN YO BUTT', 'EPIC RAP BATTLES OF HISTORY!!!!!\nAUTSUM    VS    ADHD', 'MY BUTT ITCHES', 'YOU\'RE SUCH A FUCKING NERD',
 	'The French Revolution (French: Révolution française [ʁevɔlysjɔ̃ fʁɑ̃sɛːz]) was a period of radical political and societal change in France that began with the Estates General of 1789 and ended with the formation of the French Consulate in November 1799. Many of its ideas are considered fundamental principles of liberal democracy,[1] while phrases like liberté, égalité, fraternité reappeared in other revolts, such as the 1917 Russian Revolution,[2] and inspired campaigns for the abolition of slavery and universal suffrage.[3] The values and institutions it created dominate French politics to this day.[4]\nIts causes are generally agreed to be a combination of social, political and economic factors, which the Ancien Régime proved unable to manage. In May 1789, widespread social distress led to the convocation of the Estates General, which was converted into a National Assembly in June. Continuing unrest culminated in the Storming of the Bastille on 14 July, which led to a series of radical measures by the Assembly, including the abolition of feudalism, the imposition of state control over the Catholic Church in France, and extension of the right to vote.\nThe next three years were dominated by the struggle for political control, exacerbated by economic depression and civil disorder. Austria, Britain, Prussia and other external powers sought to restore the Ancien Régime by force, while many French politicians saw war as the best way to unite the nation and preserve the spirit of the revolution by exporting it to other countries. These factors resulted in the outbreak of the French Revolutionary Wars in April 1792 and proclamation of the French First Republic in September, followed by the Execution of Louis XVI in January 1793.\nThe Paris-based Insurrection of 31 May – 2 June 1793 replaced the Girondins who dominated the National Assembly with the Committee of Public Safety, headed by Maximilien Robespierre. This sparked the Reign of Terror, an attempt to eradicate alleged \"counter-revolutionaries\"; by the time it ended in July 1794, over 16,600 had been executed in Paris and the provinces. As well as its external enemies, the Republic faced internal opposition from both Royalists and Jacobins and in order to deal with these threats, the French Directory took power in November 1795. Despite a series of military victories, many won by Napoleon Bonaparte, political divisions and economic stagnation resulted in the Directory being replaced by the Consulate in November 1799. This is generally seen as marking the end of the Revolutionary period.\n\nFR FR ON GOD',
-	'DECK THE HALLS FROM FACE TO BALLS', 'KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON'];
+	'DECK THE HALLS FROM FACE TO BALLS', 'KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON KILL JOHN LENNON',
+	'TIME TRAVEL TO A PARTICULAR YEAR SHOWN IN THIS MOD'];
+	var youAre:FlxText;
+	var aNERD:FlxText;
+
+	var firstTime:Int = 0;
 
 	override public function create()
 	{
 		//trace('Playback Rate: ' + playbackRate);
 		Paths.clearStoredMemory();
+
+		#if debug
+		debugMode = true;
+		#end
 
 		// for lua
 		instance = this;
@@ -599,6 +614,11 @@ class PlayState extends MusicBeatState
 				rfylMechInfo.animation.addByPrefix('close', 'closes', 24, false);
 				rfylMechInfo.screenCenter();
 				rfylMechInfo.cameras = [camOther];
+				
+				smiler = new BGSprite('hallway/smiler', ['idle smiler'], true);
+				smiler.x += DAD_X + 300;
+				smiler.y += DAD_Y + 500;
+				smiler.alpha = 0;
 
 				gunInfo = new FlxText(0, 500, FlxG.width, "Press SPACE to Shoot", 40);
 				gunInfo.setFormat(Paths.font("vcr.ttf"), 40, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -606,25 +626,49 @@ class PlayState extends MusicBeatState
 				gunInfo.cameras = [camOther];
 				add(gunInfo);
 				gunInfo.alpha = 0;
+
+				smilePleas = new FlxText(0, 500, FlxG.width, "SMILE FOR US.", 40);
+				smilePleas.setFormat(Paths.font("vcr.ttf"), 40, FlxColor.RED, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+				smilePleas.borderSize = 1.25;
+				smilePleas.cameras = [camOther];
+				add(smilePleas);
+				smilePleas.alpha = 0;
 			case '2032':
 				table = new BGSprite('2032/table', -600, -200, 1, 1);
 				light = new BGSprite('2032/light', -600, -200, 1, 1);
+
+				argyllPortrait = new BGSprite('2032/sdfghj', ['UHSAIJKD'], false);
+				argyllPortrait.animation.addByPrefix('idle', 'UHSAIJKD', 24, false);
+				argyllPortrait.screenCenter();
+				argyllPortrait.x -= 250;
+				argyllPortrait.y += 500;
+				argyllPortrait.scale.set(0.75,0.75);
+				argyllPortrait.alpha = 0;
 			case 'behindspace':
 				var bg = new BGSprite('thebehindspace/room', -600, -200, 0.9, 0.9);
 				bg.setGraphicSize(Std.int(bg.width * 2));
 				add(bg);
-			case 'facility': // mmmm tre
-				GameOverSubstate.characterName = 'markusclover-dead';
-				GameOverSubstate.deathSoundName = 'fnf_loss_sfx-markusclover';
-
+			case 'facility':
 				facility = new BGSprite('facility/Laboratory', 100, -200, 1, 1);
 				facility.setGraphicSize(Std.int(facility.width * 1.9));
 				add(facility);
 				facility.alpha = 0;
 
-				frontFacility = new BGSprite('facility/Front_Laboratory', 100, 1000, 1, 1.2);
-				frontFacility.setGraphicSize(Std.int(frontFacility.width * 1.9));
+				frontFacility = new BGSprite('facility/Front_Laboratory', -100, 1000, 0.8, 0.6);
+				frontFacility.setGraphicSize(Std.int(frontFacility.width * 1.2));
 				frontFacility.alpha = 0;
+
+				youAre = new FlxText(450, 0, FlxG.width, "YOU'RE SUCH A", 80);
+				youAre.setFormat(Paths.font("vcr.ttf"), 75, FlxColor.BLACK, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);
+				youAre.borderSize = 1.25;
+				youAre.scrollFactor.set(1, 1);
+				youAre.alpha = 0;
+
+				aNERD = new FlxText(475, 75, FlxG.width, "FUCKING NERD.", 80);
+				aNERD.setFormat(Paths.font("vcr.ttf"), 75, FlxColor.RED, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);
+				aNERD.borderSize = 1.25;
+				aNERD.scrollFactor.set(1, 1);
+				aNERD.alpha = 0;
 		}
 
 		switch(Paths.formatToSongPath(SONG.song))
@@ -645,7 +689,7 @@ class PlayState extends MusicBeatState
 
 				GameOverSubstate.deathSoundName = '';
 				GameOverSubstate.loopSoundName = 'gameOver-rfyl';
-				GameOverSubstate.endSoundName = '';//'gameOverEnd-lostcause';
+				GameOverSubstate.endSoundName = '';
 				GameOverSubstate.characterName = 'mark-dead';
 
 
@@ -656,17 +700,42 @@ class PlayState extends MusicBeatState
 					//addShaderToCamera('camOther', new VCRDistortionEffect(0.025, true, false, true));
 				}
 			case '2032':
+				noCountdown = true;
+				
+				GameOverSubstate.deathSoundName = '';
+				GameOverSubstate.loopSoundName = 'gameOver-rfyl';
+				GameOverSubstate.endSoundName = '';
+				GameOverSubstate.characterName = 'mark-dead';
+
 				addCharacterToList('argyll-maskfall', 1);
 				addCharacterToList('argyll-maskless', 1);
 				boyfriendGroup.alpha = 0;
+				if(ClientPrefs.shaders){
+					addShaderToCamera('camGame', new VCRDistortionEffect(0.025, true, false, true));
+					//addShaderToCamera('camHUD', new VCRDistortionEffect(0.025, true, false, true));
+					// addShaderToCamera('camNotes', new VCRDistortionEffect(0.025, true, false, true));
+					//addShaderToCamera('camOther', new VCRDistortionEffect(0.025, true, false, true));
+				}
 			case 'simply-better-than-you':
+				GameOverSubstate.deathSoundName = 'bwomp';
+				GameOverSubstate.loopSoundName = 'felloffmusic';
+				GameOverSubstate.endSoundName = '';
+				GameOverSubstate.characterName = 'felloff';
 				addCharacterToList('clio-guitar', 1);
 			case 'captive':
+				WindowsNotification.sendFakeMsgBox('I\'VE BEEN WAITING FOR YOU, MARKUS.');
+				WindowsNotification.sendFakeMsgBox('NOW WE CAN BEGIN.');
+
+				GameOverSubstate.characterName = 'markusclover-dead';
+				GameOverSubstate.deathSoundName = 'fnf_loss_sfx-markusclover';
+
 				if(ClientPrefs.shaders)
 					addShaderToCamera('camGame', new ChromaticAberrationEffect(0.005));
 
-				dadGroup.alpha = 0;
+				noCountdown = true;
+				// dadGroup.alpha = 0;
 				camGame.alpha = 0;
+				camHUD.alpha = 0;
 		}
 
 		if(isPixelStage) {
@@ -691,10 +760,14 @@ class PlayState extends MusicBeatState
 			case 'hallway':
 				add(lights);
 				add(pillar);
+				add(smiler);
 			case '2032':
 				add(table);
+				add(argyllPortrait);
 				add(light);
 			case 'facility':
+				add(youAre);
+				add(aNERD);
 				add(frontFacility);
 		}
 
@@ -1123,7 +1196,7 @@ class PlayState extends MusicBeatState
 		else
 		{
 			var leDate = Date.now();
-			if (daSong == '2032' && leDate.getFullYear() == 2032){
+			if (daSong == '2032' /*&& leDate.getMonth() == 4 && leDate1.getDate() == 22 */&& leDate.getFullYear() == 2032){
 				startVideo('nuke_omg_real');
 				new FlxTimer().start(13, function(tmr:FlxTimer){
 					var achieveID:Int = Achievements.getAchievementIndex('timetravel');
@@ -1538,8 +1611,11 @@ class PlayState extends MusicBeatState
 	}
 
 	var twn:FlxTween;
+	var twnSmiler:FlxTween;
 	function alternateAttack()
 	{
+		canPause = false;
+
 		if (!SONG.notes[curSection].mustHitSection)
 			camFollow.x += dad.cameraPosition[0] + opponentCameraOffset[0] + 600;
 		else
@@ -1552,6 +1628,7 @@ class PlayState extends MusicBeatState
 
 		new FlxTimer().start(0.25, function(tmr:FlxTimer){
 			twn = FlxTween.tween(dadGroup, {x: dadGroup.x + 900}, 1.25, {ease: FlxEase.expoIn});
+			twnSmiler = FlxTween.tween(smiler, {x: smiler.x + 900}, 1.25, {ease: FlxEase.expoIn});
 			alternateMovement = true;
 		});
 
@@ -2098,70 +2175,77 @@ class PlayState extends MusicBeatState
 				switch (swagCounter)
 				{
 					case 0:
-						FlxG.sound.play(Paths.sound('intro3' + introSoundsSuffix), 0.6);
+						if (!noCountdown)
+							FlxG.sound.play(Paths.sound('intro3' + introSoundsSuffix), 0.6);
 					case 1:
-						countdownReady = new FlxSprite().loadGraphic(Paths.image(introAlts[0]));
-						countdownReady.cameras = [camHUD];
-						countdownReady.scrollFactor.set();
-						countdownReady.updateHitbox();
+						if (!noCountdown) {
+							countdownReady = new FlxSprite().loadGraphic(Paths.image(introAlts[0]));
+							countdownReady.cameras = [camHUD];
+							countdownReady.scrollFactor.set();
+							countdownReady.updateHitbox();
 
-						if (PlayState.isPixelStage)
-							countdownReady.setGraphicSize(Std.int(countdownReady.width * daPixelZoom));
+							if (PlayState.isPixelStage)
+								countdownReady.setGraphicSize(Std.int(countdownReady.width * daPixelZoom));
 
-						countdownReady.screenCenter();
-						countdownReady.antialiasing = antialias;
-						insert(members.indexOf(notes), countdownReady);
-						FlxTween.tween(countdownReady, {/*y: countdownReady.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
-							ease: FlxEase.cubeInOut,
-							onComplete: function(twn:FlxTween)
-							{
-								remove(countdownReady);
-								countdownReady.destroy();
-							}
-						});
-						FlxG.sound.play(Paths.sound('intro2' + introSoundsSuffix), 0.6);
+							countdownReady.screenCenter();
+							countdownReady.antialiasing = antialias;
+							insert(members.indexOf(notes), countdownReady);
+							FlxTween.tween(countdownReady, {/*y: countdownReady.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
+								ease: FlxEase.cubeInOut,
+								onComplete: function(twn:FlxTween)
+								{
+									remove(countdownReady);
+									countdownReady.destroy();
+								}
+							});
+							FlxG.sound.play(Paths.sound('intro2' + introSoundsSuffix), 0.6);
+						}
 					case 2:
-						countdownSet = new FlxSprite().loadGraphic(Paths.image(introAlts[1]));
-						countdownSet.cameras = [camHUD];
-						countdownSet.scrollFactor.set();
+						if (!noCountdown) {
+							countdownSet = new FlxSprite().loadGraphic(Paths.image(introAlts[1]));
+							countdownSet.cameras = [camHUD];
+							countdownSet.scrollFactor.set();
 
-						if (PlayState.isPixelStage)
-							countdownSet.setGraphicSize(Std.int(countdownSet.width * daPixelZoom));
+							if (PlayState.isPixelStage)
+								countdownSet.setGraphicSize(Std.int(countdownSet.width * daPixelZoom));
 
-						countdownSet.screenCenter();
-						countdownSet.antialiasing = antialias;
-						insert(members.indexOf(notes), countdownSet);
-						FlxTween.tween(countdownSet, {/*y: countdownSet.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
-							ease: FlxEase.cubeInOut,
-							onComplete: function(twn:FlxTween)
-							{
-								remove(countdownSet);
-								countdownSet.destroy();
-							}
-						});
-						FlxG.sound.play(Paths.sound('intro1' + introSoundsSuffix), 0.6);
+							countdownSet.screenCenter();
+							countdownSet.antialiasing = antialias;
+							insert(members.indexOf(notes), countdownSet);
+							FlxTween.tween(countdownSet, {/*y: countdownSet.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
+								ease: FlxEase.cubeInOut,
+								onComplete: function(twn:FlxTween)
+								{
+									remove(countdownSet);
+									countdownSet.destroy();
+								}
+							});
+							FlxG.sound.play(Paths.sound('intro1' + introSoundsSuffix), 0.6);
+						}
 					case 3:
-						countdownGo = new FlxSprite().loadGraphic(Paths.image(introAlts[2]));
-						countdownGo.cameras = [camHUD];
-						countdownGo.scrollFactor.set();
-
-						if (PlayState.isPixelStage)
-							countdownGo.setGraphicSize(Std.int(countdownGo.width * daPixelZoom));
-
-						countdownGo.updateHitbox();
-
-						countdownGo.screenCenter();
-						countdownGo.antialiasing = antialias;
-						insert(members.indexOf(notes), countdownGo);
-						FlxTween.tween(countdownGo, {/*y: countdownGo.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
-							ease: FlxEase.cubeInOut,
-							onComplete: function(twn:FlxTween)
-							{
-								remove(countdownGo);
-								countdownGo.destroy();
-							}
-						});
-						FlxG.sound.play(Paths.sound('introGo' + introSoundsSuffix), 0.6);
+						if (!noCountdown) {
+							countdownGo = new FlxSprite().loadGraphic(Paths.image(introAlts[2]));
+							countdownGo.cameras = [camHUD];
+							countdownGo.scrollFactor.set();
+	
+							if (PlayState.isPixelStage)
+								countdownGo.setGraphicSize(Std.int(countdownGo.width * daPixelZoom));
+	
+							countdownGo.updateHitbox();
+	
+							countdownGo.screenCenter();
+							countdownGo.antialiasing = antialias;
+							insert(members.indexOf(notes), countdownGo);
+							FlxTween.tween(countdownGo, {/*y: countdownGo.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
+								ease: FlxEase.cubeInOut,
+								onComplete: function(twn:FlxTween)
+								{
+									remove(countdownGo);
+									countdownGo.destroy();
+								}
+							});
+							FlxG.sound.play(Paths.sound('introGo' + introSoundsSuffix), 0.6);
+						}
 					case 4:
 				}
 
@@ -2804,6 +2888,16 @@ class PlayState extends MusicBeatState
 
 		switch (curStage)
 		{
+			case 'facility':
+				var currentBeat:Float = (Conductor.songPosition / 1000) * (170/ 60);
+				if (curStep > 123){
+					for (i in 0...4) {
+						playerStrums.members[i].x = playerStrums.members[i].x;
+						playerStrums.members[i].y = playerStrums.members[i].y + 50 * Math.sin((currentBeat + i*1)) * elapsed;
+						opponentStrums.members[i].x = opponentStrums.members[i].x;
+						opponentStrums.members[i].y = opponentStrums.members[i].y + 50 * Math.sin((currentBeat + i*1)) * elapsed;
+					}
+				}
 			case 'hallway':
 				if (curStep > 127){
 					if (FlxG.keys.justPressed.SPACE){
@@ -2813,15 +2907,18 @@ class PlayState extends MusicBeatState
 						dad.playAnim('shot', false);
 						dad.specialAnim = true;
 	
-						shootStack += 0.025;
+						shootStack += 0.05;
 	
 						if (alternateMovement)
 							{
 								twn.cancel();
+								twnSmiler.cancel();
 								FlxTween.tween(dadGroup, {x: DAD_X}, 0.5, {ease: FlxEase.quadOut});
+								FlxTween.tween(smiler, {x: DAD_X + 300}, 0.5, {ease: FlxEase.quadOut});
 								markShootingHit = true;
-								health -= 0.025 + shootStack;
+								health -= 0.05 + shootStack;
 								alternateMovement = false;
+								canPause = true;
 							}
 						else
 							health -= 0.1 + shootStack;
@@ -3027,7 +3124,7 @@ class PlayState extends MusicBeatState
 		else
 			iconP2.animation.curAnim.curFrame = 0;
 
-		if (FlxG.keys.anyJustPressed(debugKeysCharacter) && !endingSong && !inCutscene) {
+		if (FlxG.keys.anyJustPressed(debugKeysCharacter) && !endingSong && !inCutscene && debugMode) {
 			persistentUpdate = false;
 			paused = true;
 			cancelMusicFadeTween();
@@ -3309,14 +3406,14 @@ class PlayState extends MusicBeatState
 
 	function openChartEditor()
 	{
-		if (SONG.song.toLowerCase() == 'captive'){
-			WindowsNotification.sendFakeMsgBox('THE FUCK YOU LOOKING AT?');
+		if (SONG.song.toLowerCase() == 'captive' && !debugMode){
+			WindowsNotification.sendFakeMsgBox('THE FUCK ARE YOU LOOKING AT?');
 			#if sys
 			Sys.exit(0);
 			#end
 			health = 0;
 		}
-		else{
+		else if (debugMode) {
 			persistentUpdate = false;
 			paused = true;
 			cancelMusicFadeTween();
@@ -3982,6 +4079,8 @@ class PlayState extends MusicBeatState
 			}
 			else
 			{
+				if (curSong == 'Captive')
+					WindowsNotification.sendFakeMsgBox('SEE YOU SOON, MARKUS.');
 				trace('WENT BACK TO FREEPLAY??');
 				WeekData.loadTheFirstEnabledMod();
 				cancelMusicFadeTween();
@@ -4950,7 +5049,7 @@ class PlayState extends MusicBeatState
 		}
 		FlxG.sound.music.fadeTween = null;
 	}
-	
+
 	var popupCount:Float = 0;
 	function popupWindow() {
 		var popupScaleTween:FlxTween;
@@ -5042,56 +5141,85 @@ class PlayState extends MusicBeatState
 		if(curStep == lastStepHit) {
 			return;
 		}
-
-		if (SONG.song.toLowerCase() == 'captive'){
-			switch(curStep) {
-				case 1:
-					FlxTween.tween(camGame, {alpha: 1}, 1, {ease: FlxEase.quartInOut});
-				case 64:
-					FlxTween.tween(FlxG.camera, {zoom: 0.8}, 6, {ease: FlxEase.quadInOut});				
-				case 104:
-					FlxTween.tween(dadGroup, {alpha: 1}, 1, {ease: FlxEase.quartInOut});
-				case 124:
-					for (i in 0...4){
-						FlxTween.tween(playerStrums.members[i], {x: playerStrums.members[i].x + 300}, 1, {ease: FlxEase.quartInOut});
-						FlxTween.tween(opponentStrums.members[i], {x: opponentStrums.members[i].x + 600}, 1, {ease: FlxEase.quartInOut});
-						FlxTween.tween(opponentStrums.members[i], {alpha: 1}, 1, {ease: FlxEase.quartInOut});
-					}
-				case 128:
-					FlxTween.tween(this, {timeBarLength: 99999999}, 121);
-				case 1280:
-					FlxTween.tween(camGame, {alpha: 0}, 1.5, {ease: FlxEase.quartInOut});
-			}
-		}
-
-		if (SONG.song.toLowerCase() == 'simply better than you'){			
-		 	switch(curStep){
-		 		case 384:
-		 			FlxTween.tween(FlxG.camera, {zoom: 1}, 16, {ease: FlxEase.quadInOut});
-			}
-		}
-
-		if (SONG.song.toLowerCase() == 'run for your life'){
-			switch(curStep) {
-				case 4:
-					add(rfylMechInfo);
-				case 12:
-					rfylMechInfo.animation.play('text', false);
-				case 44:
-					rfylMechInfo.animation.play('close', false);
-				case 48:
-					remove(rfylMechInfo);
-				case 122:
-					startRunning.alpha = 1;
-					startRunning.animation.play('start', false);
-				case 128:
-					FlxTween.tween(gunInfo, {alpha: 1}, 1);
-					new FlxTimer().start(10, function(tmr:FlxTimer){
-						FlxTween.tween(gunInfo, {alpha: 0}, 1);
-					});
-				case 130:
-					remove(startRunning);
-			}
+		switch(curSong){
+			case 'Run For Your Life':
+				switch(curStep) {
+					case 4:
+						add(rfylMechInfo);
+					case 12:
+						rfylMechInfo.animation.play('text', false);
+					case 44:
+						rfylMechInfo.animation.play('close', false);
+					case 48:
+						remove(rfylMechInfo);
+					case 122:
+						startRunning.alpha = 1;
+						startRunning.animation.play('start', false);
+					case 128:
+						smiler.alpha = 1;
+						FlxTween.tween(gunInfo, {alpha: 1}, 1);
+						new FlxTimer().start(10, function(tmr:FlxTimer){
+							FlxTween.tween(gunInfo, {alpha: 0}, 1);
+						});
+					case 130:
+						remove(startRunning);
+					case 256:
+						FlxG.camera.flash(FlxColor.BLACK, 0.25, null, true);	
+						FlxTween.tween(camGame, {alpha: 0}, 0.25, {ease: FlxEase.quartInOut});
+					case 278:
+						smilePleas.alpha = 1;
+					case 288:
+						FlxG.camera.flash(FlxColor.WHITE, 0.25, null, true);	
+						FlxTween.tween(camGame, {alpha: 1}, 0.25, {ease: FlxEase.quartInOut});
+						smilePleas.alpha = 0;
+				}
+			case '2032':
+				switch(curStep){
+					case 384:
+						FlxTween.tween(camHUD, {alpha: 0}, 0.25, {ease: FlxEase.quartInOut});
+						FlxTween.tween(camNotes, {alpha: 0}, 0.25, {ease: FlxEase.quartInOut});
+					case 386:
+						argyllPortrait.alpha = 1;
+						argyllPortrait.animation.play('idle', false);
+					case 398:
+						FlxTween.tween(camHUD, {alpha: 1}, 0.25, {ease: FlxEase.quartInOut});
+						FlxTween.tween(camNotes, {alpha: 1}, 0.25, {ease: FlxEase.quartInOut});
+				}
+			case 'simply better than you':
+				switch(curStep){
+					case 384:
+						FlxTween.tween(FlxG.camera, {zoom: 1}, 16, {ease: FlxEase.quadInOut});
+			   }
+			case 'Captive':
+				switch(curStep) {
+					case 1:
+						FlxTween.tween(camGame, {alpha: 1}, 1, {ease: FlxEase.quartInOut});
+						FlxTween.tween(FlxG.camera, {zoom: 0.8}, 12, {ease: FlxEase.quadInOut});			
+					case 104:
+						FlxTween.tween(dadGroup, {alpha: 1}, 1, {ease: FlxEase.quartInOut});
+					case 124:
+						for (i in 0...4){
+							FlxTween.tween(playerStrums.members[i], {x: playerStrums.members[i].x + 300}, 1, {ease: FlxEase.quartInOut});
+							FlxTween.tween(opponentStrums.members[i], {x: opponentStrums.members[i].x + 600}, 1, {ease: FlxEase.quartInOut});
+							FlxTween.tween(opponentStrums.members[i], {alpha: 1}, 1, {ease: FlxEase.quartInOut});
+						}
+						FlxTween.tween(camHUD, {alpha: 1}, 1, {ease: FlxEase.quartInOut});
+					case 128:
+						if(ClientPrefs.timeBarType == 'Song Name')
+							timeTxt.text = "MY DOMAIN";
+						else
+							FlxTween.tween(this, {timeBarLength: 99999999}, 121);
+						health = 1;
+					case 871:
+						youAre.alpha = 1;
+					case 878:
+						aNERD.alpha = 1;
+					case 888:
+						youAre.alpha = 0;
+						aNERD.alpha = 0;
+					case 1280:
+						FlxTween.tween(camGame, {alpha: 0}, 1.5, {ease: FlxEase.quartInOut});
+				}
 		}
 
 		lastStepHit = curStep;
@@ -5211,9 +5339,9 @@ class PlayState extends MusicBeatState
 			if (camZooming && FlxG.camera.zoom < 1.35 && ClientPrefs.camZooms)
 			{
 				if (curSong.toLowerCase() == 'captive'){
-					FlxG.camera.zoom += 0.000000001 * camZoomingMult;
-					camHUD.zoom += 0.000000001 * camZoomingMult;
-					camNotes.zoom += 0.000000001 * camZoomingMult;
+					FlxG.camera.zoom += 0.000000001 * 0;
+					camHUD.zoom += 0.000000001 * 0;
+					camNotes.zoom += 0.000000001 * 0;
 				}
 				else{
 					FlxG.camera.zoom += 0.015 * camZoomingMult;

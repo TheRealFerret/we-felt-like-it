@@ -23,6 +23,11 @@
 						"Set Property",
 						"frontFacility.alpha",
 						"1"
+					],
+					[
+						"Change Scroll Speed",
+						"1.17",
+						"0.000001"
 					]
 				]
 			],
@@ -1197,6 +1202,21 @@
 				]
 			],
 			[
+				85800,
+				[
+					[
+						"Change Character",
+						"Dad",
+						"nathanialvoiceline"
+					],
+					[
+						"Play Animation",
+						"voice",
+						"Dad"
+					]
+				]
+			],
+			[
 				86400,
 				[
 					[
@@ -1233,6 +1253,11 @@
 						"Add Camera Zoom",
 						"0.1",
 						"0.075"
+					],
+					[
+						"Change Character",
+						"Dad",
+						"nathanial"
 					]
 				]
 			],

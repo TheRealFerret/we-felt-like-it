@@ -1,0 +1,45 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "nerd",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "voice",
+			"fps": 24,
+			"name": "nerd",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/nerd",
+	"position": [
+		85,
+		-5
+	],
+	"healthicon": "nathanial",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		255,
+		255
+	],
+	"camera_position": [
+		-155,
+		45
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}

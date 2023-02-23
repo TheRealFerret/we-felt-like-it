@@ -62,12 +62,12 @@
 		0,
 		0
 	],
-	"healthicon": "bf",
+	"healthicon": "arg-angy",
 	"flip_x": true,
 	"healthbar_colors": [
-		49,
-		176,
-		209
+		56,
+		1,
+		0
 	],
 	"camera_position": [
 		0,

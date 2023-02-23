@@ -88,6 +88,9 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
+		if (FlxG.random.bool(0.00025))
+			Application.current.window.title = 'chicken butt';
+
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
 
@@ -290,6 +293,7 @@ class TitleState extends MusicBeatState
 		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24, false);
 		logoBl.animation.play('bump');
 		logoBl.updateHitbox();
+		logoBl.scale.set(0.6,0.6);
 		// logoBl.screenCenter();
 		// logoBl.color = FlxColor.BLACK;
 
@@ -643,7 +647,7 @@ class TitleState extends MusicBeatState
 					#if PSYCH_WATERMARKS
 					createCoolText(['Psych Engine by'], 15);
 					#else
-					createCoolText(['ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er']);
+					createCoolText(['hoal']);
 					#end
 				// credTextShit.visible = true;
 				case 4:
@@ -652,7 +656,7 @@ class TitleState extends MusicBeatState
 					addMoreText('RiverOaken', 15);
 					addMoreText('shubs', 15);
 					#else
-					addMoreText('present');
+					addMoreText('fnf');
 					#end
 				// credTextShit.text += '\npresent...';
 				// credTextShit.addText();
@@ -668,7 +672,7 @@ class TitleState extends MusicBeatState
 					createCoolText(['In association', 'with'], -40);
 					#end
 				case 8:
-					addMoreText('newgrounds', -40);
+					addMoreText('the president', -40);
 					ngSpr.visible = true;
 				// credTextShit.text += '\nNewgrounds';
 				case 9:
@@ -690,13 +694,13 @@ class TitleState extends MusicBeatState
 				// credTextShit.text = "Friday";
 				// credTextShit.screenCenter();
 				case 14:
-					addMoreText('Friday');
+					addMoreText('we ');
 				// credTextShit.visible = true;
 				case 15:
-					addMoreText('Night');
+					addMoreText('felt');
 				// credTextShit.text += '\nNight';
 				case 16:
-					addMoreText('Funkin'); // credTextShit.text += '\nFunkin';
+					addMoreText('like it'); // credTextShit.text += '\nFunkin';
 
 				case 17:
 					skipIntro();

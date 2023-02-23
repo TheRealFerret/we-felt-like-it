@@ -1,6 +1,6 @@
 {
 	"songs": [
-		["2032", "face", [165, 0, 77]]
+		["2032", "arg-mask", [239, 239, 239]]
 	],
 
 	"weekCharacters": [
@@ -13,7 +13,7 @@
 	"storyName": "2032",
 	"weekBefore": "backroom",
 	"weekName": "2032",
-	"difficulties": "",
+	"difficulties": "5-22-2032",
 	"startUnlocked": true,
 
 	"hideStoryMode": false,

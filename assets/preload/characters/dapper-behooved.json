@@ -18,12 +18,12 @@
 		100,
 		0
 	],
-	"healthicon": "bf",
+	"healthicon": "dapper",
 	"flip_x": true,
 	"healthbar_colors": [
-		49,
-		176,
-		209
+		255,
+		107,
+		62
 	],
 	"camera_position": [
 		0,

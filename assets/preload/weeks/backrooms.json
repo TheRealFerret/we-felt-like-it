@@ -1,6 +1,6 @@
 {
 	"songs": [
-		["Run For Your Life", "entity", [165, 0, 77]]
+		["Run For Your Life", "entity", [44, 44, 44]]
 	],
 
 	"weekCharacters": [
@@ -13,7 +13,7 @@
 	"storyName": "YOUCANTRUNYOUCANTHIDEYOUCANTRUNYOUCANTHIDEYOUCANTRUNYOUCANTHIDEYOUCANTRUNYOUCANTHIDEYOUCANTRUNYOUCANTHIDEYOUCANTRUNYOUCANTHIDEYOUCANTRUNYOUCANTHIDEYOUCANTRUNYOUCANTHIDEYOUCANTRUNYOUCANTHIDE",
 	"weekBefore": "tutorial",
 	"weekName": "backrooms",
-	"difficulties": "run",
+	"difficulties": "smile",
 	"startUnlocked": true,
 
 	"hideStoryMode": false,

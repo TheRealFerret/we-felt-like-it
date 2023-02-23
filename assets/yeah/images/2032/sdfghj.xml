@@ -24,7 +24,7 @@
 	<SubTexture name="UHSAIJKD0019" x="2965" y="579" width="711" height="674" frameX="-146" frameY="0" frameWidth="857" frameHeight="1086"/>
 	<SubTexture name="UHSAIJKD0020" x="2965" y="579" width="711" height="674" frameX="-146" frameY="0" frameWidth="857" frameHeight="1086"/>
 	<SubTexture name="UHSAIJKD0021" x="2965" y="579" width="711" height="674" frameX="-146" frameY="0" frameWidth="857" frameHeight="1086"/>
-	<SubTexture name="UHSAIJKD0022" x="2238" y="579" width="714" height="673" frameX="-143" frameY="-1" frameWidth="857" frameHeight="1086"/>
+	<!-- <SubTexture name="UHSAIJKD0022" x="2238" y="579" width="714" height="673" frameX="-143" frameY="-1" frameWidth="857" frameHeight="1086"/>
 	<SubTexture name="UHSAIJKD0023" x="1511" y="579" width="714" height="673" frameX="-142" frameY="-2" frameWidth="857" frameHeight="1086"/>
 	<SubTexture name="UHSAIJKD0024" x="779" y="579" width="719" height="671" frameX="-136" frameY="-5" frameWidth="857" frameHeight="1086"/>
 	<SubTexture name="UHSAIJKD0025" x="16" y="579" width="750" height="651" frameX="-104" frameY="-26" frameWidth="857" frameHeight="1086"/>
@@ -32,5 +32,5 @@
 	<SubTexture name="UHSAIJKD0027" x="1638" y="16" width="841" height="483" frameX="0" frameY="-381" frameWidth="857" frameHeight="1086"/>
 	<SubTexture name="UHSAIJKD0028" x="798" y="16" width="827" height="466" frameX="-13" frameY="-568" frameWidth="857" frameHeight="1086"/>
 	<SubTexture name="UHSAIJKD0029" x="798" y="16" width="827" height="466" frameX="-13" frameY="-568" frameWidth="857" frameHeight="1086"/>
-	<SubTexture name="UHSAIJKD0030" x="16" y="16" width="769" height="501" frameX="-73" frameY="-585" frameWidth="857" frameHeight="1086"/>
+	<SubTexture name="UHSAIJKD0030" x="16" y="16" width="769" height="501" frameX="-73" frameY="-585" frameWidth="857" frameHeight="1086"/> -->
 </TextureAtlas>
