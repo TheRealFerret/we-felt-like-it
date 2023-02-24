@@ -4669,10 +4669,10 @@ class PlayState extends MusicBeatState
 
 			if(Paths.formatToSongPath(SONG.song) == 'captive') {
 				var ppppperc = 2/100;
-				if ((health - ppppperc < 0)) {
+				if ((health - ppppperc < 0.25)) {
 					//trace("shut up");
-					health = 0.01;
-				} else if ((health - ppppperc > 0)) {
+					//health = 0.01;
+				} else if ((health - ppppperc > 0.25)) {
 					health = health - ppppperc;
 				}
 			}
