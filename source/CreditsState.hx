@@ -86,7 +86,7 @@ class CreditsState extends MusicBeatState
 			['TheRealFerret',		'ferret (im being forced to use this help)',			'only programmer (clearly the coolest) and charter of simply better than you\n\nhelp im being forced to use this credit icon',	'https://www.youtube.com/channel/UCWNMz9fwKjLdQQb2vtSN3nA',		'8045BD'],
 			['vurn',				'blank',			'artist (this mod literally wouldnt exist without him)',						'https://www.whitehouse.gov/administration/president-biden/',	'5E99DF'],
 			['Redaction',			'redact',			'artist',																		'https://www.whitehouse.gov/administration/president-biden/',	'444444'],
-			['Slot',				'slot',				'bg stage for Captive',															'https://www.whitehouse.gov/administration/president-biden/',	'FFFFFF'],
+			['Hoshi',				'hoshi',			'bg stage for Captive',															'https://www.whitehouse.gov/administration/president-biden/',	'6CE173'],
 			['TheChildOfFandoms95',	'fands',			'logo artist',																	'https://www.whitehouse.gov/administration/president-biden/',	'FFFFFF'],
 			['BlazeWasHereLol',		'blaze',			'charter of 2032',																'https://twitter.com/BlazeHereLmao',							'1A2E94'],
 			['Grantwo',				'grant',			'charter of Run for Your Life and charter of Captive',							'https://www.youtube.com/channel/UC__PgWAhZe4_8dH1A0HLAvA',		'282828'],
